@@ -1,6 +1,21 @@
+from requests import get, ReadTimeout, HTTPError
+from ratelimiter import RateLimiter
+
+
 # Requisito 1
+@RateLimiter(max_calls=1, period=1)
 def fetch(url):
     """Seu código deve vir aqui"""
+    SECONDS = 3
+
+    try:
+        header = {"user-agent": "Fake user-agent"}
+        response = get(url, headers=header, timeout=SECONDS)
+        response.raise_for_status()
+    except (ReadTimeout, HTTPError):
+        return None
+    else:
+        return response.text
 
 
 # Requisito 2
