@@ -1,5 +1,6 @@
 from requests import get, ReadTimeout, HTTPError
 from ratelimiter import RateLimiter
+from parsel import Selector
 
 
 # Requisito 1
@@ -21,6 +22,11 @@ def fetch(url):
 # Requisito 2
 def scrape_novidades(html_content):
     """Seu código deve vir aqui"""
+    selector = Selector(text=html_content)
+
+    urls = selector.css(".archive-main article h2 a::attr(href)").getall()
+
+    return urls
 
 
 # Requisito 3
