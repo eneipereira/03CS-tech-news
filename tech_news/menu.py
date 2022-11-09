@@ -2,8 +2,11 @@ import sys
 from tech_news.scraper import get_tech_news
 from tech_news.analyzer.ratings import top_5_news, top_5_categories
 from tech_news.analyzer.search_engine import (
-    search_by_title, search_by_date, search_by_tag, search_by_category
-    )
+    search_by_title,
+    search_by_date,
+    search_by_tag,
+    search_by_category,
+)
 
 
 def insert_news_by_amount():
@@ -61,15 +64,15 @@ def analyzer_menu():
     )
 
     menu = {
-            "0": insert_news_by_amount,
-            "1": get_by_title,
-            "2": get_by_date,
-            "3": get_by_tag,
-            "4": get_by_category,
-            "5": get_top_5_news,
-            "6": get_top_5_categories,
-            "7": exit_menu
-        }
+        "0": insert_news_by_amount,
+        "1": get_by_title,
+        "2": get_by_date,
+        "3": get_by_tag,
+        "4": get_by_category,
+        "5": get_top_5_news,
+        "6": get_top_5_categories,
+        "7": exit_menu,
+    }
     try:
         menu[options_menu]()
     except KeyError:

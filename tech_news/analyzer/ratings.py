@@ -8,9 +8,8 @@ def top_5_news():
     all_news = find_news()
 
     sorted_news = sorted(
-        all_news,
-        key=lambda x: (-x["comments_count"], x["title"])
-        )
+        all_news, key=lambda x: (-x["comments_count"], x["title"])
+    )
 
     top_5_news = [(news["title"], news["url"]) for news in sorted_news][:5]
 
@@ -28,6 +27,6 @@ def top_5_categories():
 
     top_5_categories = [
         category[0] for category in Counter(sorted_categories).most_common(5)
-        ]
+    ]
 
     return top_5_categories

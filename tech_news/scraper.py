@@ -54,9 +54,9 @@ def scrape_noticia(html_content):
         "comments_count": len(selector.css(".comment-body").getall()),
         "summary": "".join(
             selector.css(".entry-content > p:nth-of-type(1) *::text").getall()
-            ).strip(),
+        ).strip(),
         "tags": selector.css(".post-tags a::text").getall(),
-        "category": selector.css("span.label::text").get()
+        "category": selector.css("span.label::text").get(),
     }
 
     return news
